@@ -12,16 +12,12 @@
         width: 100%;  
        }
     </style>
-  <body onload="locate()">
+  <body>
  
     <!--The div element for the map -->
-    <div id="map"></div>
+    <input type="text" id="mapsearch" size= "50">
+	  <div id="map"></div>
     <script>
- function locate(){
-        navigator.geolocation.getCurrentPosition(initialize,fail);
-    }
-
-
 // Initialize and add the map
 function initMap() {
   var oregon = {lat: 43.111, lng: -121.122};
@@ -38,8 +34,9 @@ function initMap() {
      animation: google.maps.Animation.DROP,
      position: {lat: 43.111, lng: -121.122},
 });
+	
 }
-
+var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
 		
 
     </script>
