@@ -24,12 +24,17 @@
 <div class="input-group-btn">
 <button id= "btn_1" class="btn btn-default get_map" type="submit">
             Locate
-	</button>
+</button>
 </div>
 </div>
 <div id="geomap"></div>
+
 <div class = "container">
-	<h2 id="city"> </h2>
+	
+	<h4 id= "title"> Location Weather</h4>
+	<h2 id="city"> 
+	
+	</h2>
 	<div class = "middle">
 	<img> </ing>
 	</div>
@@ -37,19 +42,23 @@
 </form>
 
 <style> 
-
 	#geomap{
 		
     width: 100%;
     height: 400px;
 }
+	#title{
+		position:center;
+		
+	}
 	.container{
 		  
 			
 		max-width: 550px;
 		height: 100%;
 		border: 1px solid black;
-		margi: 0 auto;
+		margin: 0 auto;
+		text-align: center;
 		
 	}	
 	
@@ -57,16 +66,13 @@
 
 <script>
 // initialize variables
-	$(document).ready(function() {
-	
-		$("")
+
 	
 	
-});	
+	
 var geocoder;
 var map;
 var marker;
-
 /*
  * Google Map with marker
  */
@@ -75,24 +81,19 @@ function initialize() {
     var initialLong = $('.search_longitude').val();
     initialLat = initialLat?initialLat:43.111;
     initialLong = initialLong?initialLong:-121.122;
-
     var latlng = new google.maps.LatLng(initialLat, initialLong);
     var options = {
-        zoom: 5,
+        zoom: 8,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-
     map = new google.maps.Map(document.getElementById("geomap"), options);
-
     geocoder = new google.maps.Geocoder();
-
     marker = new google.maps.Marker({
         map: map,
         draggable: true,
         position: latlng
     });
-
     google.maps.event.addListener(marker, "dragend", function () {
         var point = marker.getPosition();
         map.panTo(point);
@@ -106,9 +107,7 @@ function initialize() {
             }
         });
     });
-
 }
-
 $(document).ready(function () {
     //load google map
     initialize();
@@ -162,7 +161,6 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
-
     //Add listener to marker for reverse geocoding
     google.maps.event.addListener(marker, 'drag', function () {
         geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
@@ -177,16 +175,17 @@ $(document).ready(function () {
     });
 });
 	
-
 </script>
 
 <!-- search input box -->
 
 <!-- display google map -->
 
-
-<!-- display selected location information -->
 <h4>Location Details</h4>
+<p>Address: <input type="text" class="search_addr" size="45"></p>
+<p>Latitude: <input type="text" class="search_latitude" size="30"></p>
+<p>Longitude: <input type="text" class="search_longitude" size="30"></p>
+<!-- display selected location information -->
 
 	
 <body>
