@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Weather Map</title>
 </head>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,18 +14,28 @@
 	
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI7JZEFJvFylZLlVuzRua5ufGnoVMu4E"></script>
 
-	
+<script scr = "https://code.jquery.com/jquery-3.2.1.min.js" 
+		integrity ="sha256hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" 
+		crossorgin = "anonymous"> </script>
+<div id="showWeatherForcast"> </div>	
 <form>
 <div class="form-group input-group">
-    <input type="text" id="search_location" class="form-control" placeholder="Search location">
-    <div class="input-group-btn">
-        <button class="btn btn-default get_map" type="submit">
+<input type="text" id="search_location" class="form-control" placeholder="Search location">
+<div class="input-group-btn">
+<button id= "btn_1" class="btn btn-default get_map" type="submit">
             Locate
-        </button>
-    </div>
+	</button>
 </div>
+</div>
+<div id="geomap"></div>
+<div class = "container">
+	<h2 id="city"> </h2>
+	<div class = "middle">
+	<img> </ing>
+	</div>
+	</div>
 </form>
-	
+
 <style> 
 
 	#geomap{
@@ -33,11 +43,26 @@
     width: 100%;
     height: 400px;
 }
+	.container{
+		  
+			
+		max-width: 550px;
+		height: 100%;
+		border: 1px solid black;
+		margi: 0 auto;
 		
-	}
+	}	
+	
 </style>
 
 <script>
+// initialize variables
+	$(document).ready(function() {
+	
+		$("")
+	
+	
+});	
 var geocoder;
 var map;
 var marker;
@@ -48,12 +73,12 @@ var marker;
 function initialize() {
     var initialLat = $('.search_latitude').val();
     var initialLong = $('.search_longitude').val();
-    initialLat = initialLat?initialLat:36.169648;
-    initialLong = initialLong?initialLong:-115.141000;
+    initialLat = initialLat?initialLat:43.111;
+    initialLong = initialLong?initialLong:-121.122;
 
     var latlng = new google.maps.LatLng(initialLat, initialLong);
     var options = {
-        zoom: 16,
+        zoom: 5,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -158,13 +183,11 @@ $(document).ready(function () {
 <!-- search input box -->
 
 <!-- display google map -->
-<div id="geomap"></div>
+
 
 <!-- display selected location information -->
 <h4>Location Details</h4>
-<p>Address: <input type="text" class="search_addr" size="45"></p>
-<p>Latitude: <input type="text" class="search_latitude" size="30"></p>
-<p>Longitude: <input type="text" class="search_longitude" size="30"></p>
+
 	
 <body>
 </body>
