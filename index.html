@@ -131,7 +131,7 @@
 
     // Call Weather
     function weather(lat, long) {
-        var URL = `https://fcc-weather-api.glitch.me/api/current?lat=${search_latitude}&lon=${search_longitude}`;
+        var URL = `https://fcc-weather-api.glitch.me/api/current?lat={search_latitude}&lon={search_longitude}`;
 
         $.getJSON(URL, function(data) {
             updateDOM(data);
